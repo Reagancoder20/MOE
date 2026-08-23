@@ -143,16 +143,20 @@ def main():
 
     print(f"Found {len(scholarships)} scholarship-related entries.")
 
-    seen = load_seen()
+        seen = load_seen()
+
+    # First run: record everything currently on the Ministry website
+    # without sending an email for existing scholarships.
+    if not seen:
+        seen = {item_id(item) for item in scholarships}
+        save_seen(seen)
+        print("First run completed. Existing scholarships have been recorded.")
+        print("You will only receive alerts for future new postings.")
+        return
 
     new_items = []
 
     for item in scholarships:
-        identifier = item_id(item)
-
-        if identifier not in seen:
-            new_items.append(item)
-            seen.add(identifier)
 
     if not new_items:
         print("No new scholarships found.")
