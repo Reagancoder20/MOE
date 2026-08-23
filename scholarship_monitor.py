@@ -1,4 +1,4 @@
-import os
+import osl
 import json
 import hashlib
 import smtplib
