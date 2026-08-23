@@ -143,7 +143,7 @@ def main():
 
     print(f"Found {len(scholarships)} scholarship-related entries.")
 
-        seen = load_seen()
+            seen = load_seen()
 
     # First run: record everything currently on the Ministry website
     # without sending an email for existing scholarships.
@@ -155,13 +155,6 @@ def main():
         return
 
     new_items = []
-
-    for item in scholarships:
-
-    if not new_items:
-        print("No new scholarships found.")
-        save_seen(seen)
-        return
 
     print(f"Found {len(new_items)} new scholarship entries.")
 
